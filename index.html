@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Virtual</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>Hospital Virtual</h1>
+        <p>Ingeniería Hospitalaria y Clínica</p>
+    </header>
+    <!-- CONTENIDO PRINCIPAL -->
+    <main>
+        <h2>Hospital</h2>
+        <!-- REPRESENTACIÓN DEL HOSPITAL -->
+        <section class="hospital">
+            <!-- ACCESO -->
+            <div class="zona acceso">
+                <span>Acceso</span>
+            </div>
+            <!-- SERVICIO DE QUIRÓFANO (ahora solo un rótulo clickeable) -->
+            <div class="zona servicio-quirofano" onclick="abrirServicioCirugia()">
+                <h3>Servicio de Cirugía</h3>
+            </div>
+            <!-- ESPACIOS FUTUROS -->
+            <div class="zona futuro">
+                <span>Próximamente</span>
+            </div>
+            <div class="zona futuro">
+                <span>Próximamente</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- VENTANA DEL SERVICIO DE CIRUGÍA -->
+    <div id="ventanaServicioCirugia" class="modal">
+        <div class="modal-contenido modal-ancho">
+            <button class="cerrar" onclick="cerrarServicioCirugia()">
+                ×
+            </button>
+            <h2>Servicio de Cirugía</h2>
+            <!-- PLANO DEL SERVICIO DE CIRUGÍA -->
+            <div class="plano-cirugia">
+                <img src="imagenes/servicio-cirugia.png" alt="Plano del servicio de cirugía">
+
+                <!-- Zona clickeable del primer quirófano (invisible, ubicada sobre la imagen) -->
+                <button class="zona-quirofano-1" onclick="abrirQuirofano()">
+                    <span class="visually-hidden">Quirófano 1</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VENTANA DEL QUIRÓFANO -->
+    <div id="ventanaQuirofano" class="modal">
+        <div class="modal-contenido modal-ancho">
+            <button class="cerrar" onclick="cerrarQuirofano()">
+                ×
+            </button>
+            <h2>Quirófano 1</h2>
+            <p>
+                Área destinada a la realización de procedimientos
+                quirúrgicos y actividades relacionadas.
+            </p>
+            <!-- IMAGEN -->
+            <div class="imagen-quirofano">
+                <img src="imagenes/quirofano-1.png" alt="Imagen del quirófano">
+            </div>
+            <!-- INFORMACIÓN -->
+            <section class="informacion">
+                <h3>Equipamiento</h3>
+                <ul>
+                    <li>Mesa quirúrgica</li>
+                    <li>Lámpara quirúrgica</li>
+                    <li>Máquina de anestesia</li>
+                    <li>Monitor multiparamétrico</li>
+                    <li>Electrobisturí</li>
+                </ul>
+                <h3>Infraestructura</h3>
+                <ul>
+                    <li>Instalación eléctrica</li>
+                    <li>Gases medicinales</li>
+                    <li>Climatización</li>
+                    <li>Iluminación</li>
+                </ul>
+                <h3>Normativa</h3>
+                <p>
+                    En esta sección se incorporará posteriormente
+                    la normativa correspondiente.
+                </p>
+            </section>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
