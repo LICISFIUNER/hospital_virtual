@@ -1,218 +1,678 @@
-/* ------------------------------
+/* =========================================
    CONFIGURACIÓN GENERAL
------------------------------- */
+========================================= */
+
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
+
     font-family: Arial, sans-serif;
+
     background-color: #f2f5f3;
+
     color: #24332a;
+
+    overflow-x: hidden;
 }
-/* ------------------------------
+
+
+/* =========================================
    ENCABEZADO
------------------------------- */
+========================================= */
+
 header {
     background-color: #ffffff;
+
     padding: 25px;
+
     text-align: center;
+
     border-bottom: 3px solid #4caf50;
 }
+
 header h1 {
     margin: 0;
+
     font-size: 32px;
 }
+
 header p {
     margin-top: 8px;
+
     color: #666;
 }
-/* ------------------------------
+
+
+/* =========================================
    CONTENIDO
------------------------------- */
+========================================= */
+
 main {
     width: 90%;
+
     max-width: 1100px;
+
     margin: 30px auto;
 }
+
 main h2 {
     text-align: center;
 }
-/* ------------------------------
+
+
+/* =========================================
    HOSPITAL
------------------------------- */
+========================================= */
+
 .hospital {
     position: relative;
+
     width: 100%;
-    height: 600px;
+
+    /*
+       La altura ahora se adapta
+       al tamaño de la pantalla.
+    */
+
+    min-height: 600px;
+
     background-color: #ffffff;
+
     border: 4px solid #444;
+
     border-radius: 10px;
+
     padding: 20px;
+
+    overflow: hidden;
 }
-/* ------------------------------
-   ZONAS
------------------------------- */
+
+
+/* =========================================
+   ZONAS DEL HOSPITAL
+========================================= */
+
 .zona {
     position: absolute;
+
     border: 2px solid #777;
+
     display: flex;
+
     align-items: center;
+
     justify-content: center;
+
     background-color: #f7f7f7;
+
+    text-align: center;
 }
-/* ACCESO */
+
+
+/* =========================================
+   ACCESO
+========================================= */
+
 .acceso {
     left: 20px;
+
     bottom: 20px;
+
     width: 180px;
+
     height: 80px;
 }
-/* SERVICIO DE QUIRÓFANO (rótulo clickeable) */
+
+
+/* =========================================
+   SERVICIO DE CIRUGÍA
+========================================= */
+
 .servicio-quirofano {
-    left: 350px;
-    top: 100px;
-    width: 400px;
-    height: 300px;
+
+    /*
+       Antes:
+       left: 350px;
+       width: 400px;
+
+       Eso generaba problemas en celulares.
+
+       Ahora usamos porcentajes.
+    */
+
+    left: 30%;
+
+    top: 17%;
+
+    width: 40%;
+
+    height: 50%;
+
     cursor: pointer;
+
     transition: 0.2s;
 }
+
 .servicio-quirofano:hover {
     background-color: #eef7ee;
+
     border-color: #4caf50;
 }
-/* ------------------------------
-   PLANO DEL SERVICIO DE CIRUGÍA
------------------------------- */
-.plano-cirugia {
-    position: relative;
+
+
+/* =========================================
+   ESPACIOS FUTUROS
+========================================= */
+
+.futuro {
+    width: 20%;
+
+    height: 20%;
+
+    color: #999;
+
+    border-style: dashed;
+}
+
+
+/* PRIMER ESPACIO FUTURO */
+
+.futuro-1 {
+    right: 5%;
+
+    top: 15%;
+}
+
+
+/* SEGUNDO ESPACIO FUTURO */
+
+.futuro-2 {
+    right: 5%;
+
+    bottom: 15%;
+}
+
+
+/* =========================================
+   VENTANAS MODALES
+========================================= */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    z-index: 1000;
+
+    left: 0;
+
+    top: 0;
+
     width: 100%;
+
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.65);
+
+    /*
+       Permite desplazarse si el contenido
+       es más grande que la pantalla.
+    */
+
+    overflow: auto;
+
+    padding: 20px;
+}
+
+
+/* =========================================
+   CONTENIDO GENERAL DE LAS VENTANAS
+========================================= */
+
+.modal-contenido {
+
+    background-color: white;
+
+    position: relative;
+
+    margin: 20px auto;
+
+    padding: 35px;
+
+    border-radius: 12px;
+
+}
+
+
+/* =========================================
+   MODAL DEL SERVICIO DE CIRUGÍA
+========================================= */
+
+.modal-servicio {
+
+    width: 100%;
+
+    max-width: 1300px;
+
+}
+
+
+/* =========================================
+   PLANO DEL SERVICIO
+========================================= */
+
+.plano-cirugia {
+
+    position: relative;
+
+    width: 100%;
+
     margin: 10px auto 0;
 }
 
+
+/* Imagen del servicio */
+
 .plano-cirugia img {
+
     width: 100%;
-    max-width: 100%;
+
     height: auto;
+
     display: block;
+
     border-radius: 8px;
 }
 
-/* Zona invisible sobre el primer quirófano */
+
+/* =========================================
+   ZONA CLICKEABLE DEL QUIRÓFANO 1
+========================================= */
+
 .zona-quirofano-1 {
+
     position: absolute;
 
-    /* Ubicación aproximada del primer quirófano */
+    /*
+       Ubicación aproximada del primer quirófano.
+    */
+
     left: 14%;
+
     top: 8%;
 
     width: 14%;
+
     height: 24%;
 
     background: transparent;
+
     border: none;
+
     padding: 0;
+
     cursor: pointer;
 }
 
+
 /* Cuando pasás el mouse */
+
 .zona-quirofano-1:hover {
+
     background: rgba(0, 100, 255, 0.15);
+
     border: 2px solid #0066cc;
+
     border-radius: 10px;
 }
 
-/* Texto oculto visualmente pero accesible para lectores de pantalla */
+
+/* =========================================
+   TEXTO OCULTO
+========================================= */
+
 .visually-hidden {
+
     position: absolute;
+
     width: 1px;
+
     height: 1px;
+
     overflow: hidden;
+
     clip: rect(0, 0, 0, 0);
+
     white-space: nowrap;
 }
-/* ------------------------------
-   ESPACIOS FUTUROS
------------------------------- */
-.futuro {
-    width: 200px;
-    height: 120px;
-    color: #999;
-    border-style: dashed;
+
+
+/* =========================================
+   MODAL DEL QUIRÓFANO
+========================================= */
+
+.modal-quirofano {
+
+    /*
+       El ancho se adapta al contenido.
+       Esto permite que la imagen conserve
+       su tamaño natural.
+    */
+
+    width: fit-content;
+
+    max-width: none;
+
+    min-width: 600px;
 }
-.futuro:nth-of-type(3) {
-    right: 30px;
-    top: 80px;
-}
-.futuro:nth-of-type(4) {
-    right: 30px;
-    bottom: 60px;
-}
-/* ------------------------------
-   VENTANA MODAL
------------------------------- */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.65);
-    overflow-y: auto;
-}
-/* CONTENIDO DE LA VENTANA */
-.modal-contenido {
-    background-color: white;
-    width: 85%;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 35px;
-    border-radius: 12px;
-    position: relative;
-}
-/* Modal más ancho, usado para el plano de cirugía y el quirófano */
-.modal-ancho {
-    width: 95%;
-    max-width: 1300px;
-}
-/* BOTÓN CERRAR */
-.cerrar {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    border: none;
-    background: none;
-    font-size: 35px;
-    cursor: pointer;
-    color: #555;
-}
-.cerrar:hover {
-    color: black;
-}
-/* ------------------------------
+
+
+/* =========================================
    IMAGEN DEL QUIRÓFANO
------------------------------- */
+========================================= */
+
 .imagen-quirofano {
+
+    width: fit-content;
+
+    margin: 25px 0;
+}
+
+
+/*
+   IMPORTANTE:
+   No reducimos la imagen.
+
+   width: auto mantiene su tamaño natural.
+*/
+
+.imagen-quirofano img {
+
+    width: auto;
+
+    height: auto;
+
+    max-width: none;
+
+    display: block;
+
+    border-radius: 8px;
+}
+
+.imagen-quirofano-principal {
     width: 100%;
     margin: 25px 0;
 }
-.imagen-quirofano img {
+
+.imagen-quirofano-principal img {
     width: 100%;
-    max-width: 100%;
     height: auto;
     display: block;
     border-radius: 8px;
 }
-/* ------------------------------
+
+/* =========================================
    INFORMACIÓN
------------------------------- */
+========================================= */
+
+.informacion {
+
+    width: 100%;
+
+    max-width: 818px;
+}
+
+
 .informacion h3 {
+
     margin-top: 30px;
+
     border-bottom: 2px solid #4caf50;
+
     padding-bottom: 8px;
 }
+
+
 .informacion li {
+
     margin-bottom: 8px;
+}
+
+
+/* =========================================
+   BOTÓN CERRAR
+========================================= */
+
+.cerrar {
+
+    position: absolute;
+
+    top: 15px;
+
+    right: 20px;
+
+    border: none;
+
+    background: none;
+
+    font-size: 35px;
+
+    cursor: pointer;
+
+    color: #555;
+
+    z-index: 10;
+}
+
+
+.cerrar:hover {
+
+    color: black;
+}
+
+
+/* =========================================
+   ADAPTACIÓN PARA CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+
+
+    /* -----------------------------
+       ENCABEZADO
+    ----------------------------- */
+
+    header {
+
+        padding: 18px 10px;
+    }
+
+
+    header h1 {
+
+        font-size: 25px;
+    }
+
+
+    header p {
+
+        font-size: 14px;
+    }
+
+
+    /* -----------------------------
+       CONTENIDO
+    ----------------------------- */
+
+    main {
+
+        width: 94%;
+
+        margin: 20px auto;
+    }
+
+
+    /* -----------------------------
+       HOSPITAL
+    ----------------------------- */
+
+    .hospital {
+
+        min-height: 500px;
+
+        padding: 10px;
+
+        border-width: 3px;
+    }
+
+
+    /* -----------------------------
+       SERVICIO DE CIRUGÍA
+    ----------------------------- */
+
+    .servicio-quirofano {
+
+        /*
+           En celular ocupa una parte
+           proporcional del hospital.
+        */
+
+        left: 10%;
+
+        top: 15%;
+
+        width: 65%;
+
+        height: 40%;
+    }
+
+
+    .servicio-quirofano h3 {
+
+        font-size: 16px;
+
+        padding: 10px;
+    }
+
+
+    /* -----------------------------
+       ACCESO
+    ----------------------------- */
+
+    .acceso {
+
+        left: 10px;
+
+        bottom: 10px;
+
+        width: 120px;
+
+        height: 55px;
+
+        font-size: 14px;
+    }
+
+
+    /* -----------------------------
+       ESPACIOS FUTUROS
+    ----------------------------- */
+
+    .futuro {
+
+        width: 20%;
+
+        height: 15%;
+
+        font-size: 12px;
+    }
+
+
+    /* -----------------------------
+       MODALES
+    ----------------------------- */
+
+    .modal {
+
+        padding: 10px;
+    }
+
+
+    .modal-contenido {
+
+        padding: 25px 15px;
+
+        margin: 10px auto;
+    }
+
+
+    /* -----------------------------
+       MODAL SERVICIO
+    ----------------------------- */
+
+    .modal-servicio {
+
+        width: 100%;
+
+        max-width: 100%;
+    }
+
+
+    /*
+       El plano del servicio sí se adapta
+       al celular.
+    */
+
+    .plano-cirugia img {
+
+        width: 100%;
+
+        height: auto;
+    }
+
+
+    /* -----------------------------
+       MODAL QUIRÓFANO
+    ----------------------------- */
+
+    .modal-quirofano {
+
+        /*
+           La ventana puede ser más grande
+           que la pantalla si la imagen
+           conserva su tamaño natural.
+        */
+
+        min-width: 600px;
+
+        width: fit-content;
+
+        margin-left: 0;
+
+        margin-right: 0;
+    }
+
+
+    /*
+       La imagen del quirófano conserva
+       su tamaño original.
+    */
+
+    .imagen-quirofano img {
+
+        width: auto;
+
+        max-width: none;
+
+        height: auto;
+    }
+
+
+    .informacion {
+
+        max-width: 818px;
+    }
+
 }
