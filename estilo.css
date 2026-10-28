@@ -1,678 +1,748 @@
-/* =========================================
+
+/* ========================================
    CONFIGURACIÓN GENERAL
-========================================= */
+======================================== */
 
 * {
     box-sizing: border-box;
 }
 
+:root {
+    --azul-oscuro: #0b1d32;
+    --azul-panel: #102941;
+    --azul: #1764a4;
+    --azul-claro: #e8f2fa;
+    --fondo: #edf1f5;
+    --borde: #d7dfe7;
+    --texto: #26394d;
+    --texto-secundario: #65788a;
+    --blanco: #ffffff;
+}
+
 body {
     margin: 0;
-
-    font-family: Arial, sans-serif;
-
-    background-color: #f2f5f3;
-
-    color: #24332a;
-
-    overflow-x: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--texto);
+    background: var(--fondo);
 }
 
-
-/* =========================================
-   ENCABEZADO
-========================================= */
-
-header {
-    background-color: #ffffff;
-
-    padding: 25px;
-
-    text-align: center;
-
-    border-bottom: 3px solid #4caf50;
-}
-
-header h1 {
-    margin: 0;
-
-    font-size: 32px;
-}
-
-header p {
-    margin-top: 8px;
-
-    color: #666;
-}
-
-
-/* =========================================
-   CONTENIDO
-========================================= */
-
-main {
-    width: 90%;
-
-    max-width: 1100px;
-
-    margin: 30px auto;
-}
-
-main h2 {
-    text-align: center;
-}
-
-
-/* =========================================
-   HOSPITAL
-========================================= */
-
-.hospital {
-    position: relative;
-
-    width: 100%;
-
-    /*
-       La altura ahora se adapta
-       al tamaño de la pantalla.
-    */
-
-    min-height: 600px;
-
-    background-color: #ffffff;
-
-    border: 4px solid #444;
-
-    border-radius: 10px;
-
-    padding: 20px;
-
-    overflow: hidden;
-}
-
-
-/* =========================================
-   ZONAS DEL HOSPITAL
-========================================= */
-
-.zona {
-    position: absolute;
-
-    border: 2px solid #777;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background-color: #f7f7f7;
-
-    text-align: center;
-}
-
-
-/* =========================================
-   ACCESO
-========================================= */
-
-.acceso {
-    left: 20px;
-
-    bottom: 20px;
-
-    width: 180px;
-
-    height: 80px;
-}
-
-
-/* =========================================
-   SERVICIO DE CIRUGÍA
-========================================= */
-
-.servicio-quirofano {
-
-    /*
-       Antes:
-       left: 350px;
-       width: 400px;
-
-       Eso generaba problemas en celulares.
-
-       Ahora usamos porcentajes.
-    */
-
-    left: 30%;
-
-    top: 17%;
-
-    width: 40%;
-
-    height: 50%;
-
+button {
+    font: inherit;
     cursor: pointer;
-
-    transition: 0.2s;
 }
 
-.servicio-quirofano:hover {
-    background-color: #eef7ee;
-
-    border-color: #4caf50;
+button:focus-visible {
+    outline: 3px solid #56a8e8;
+    outline-offset: 2px;
 }
 
+/* ========================================
+   ENCABEZADO
+======================================== */
 
-/* =========================================
-   ESPACIOS FUTUROS
-========================================= */
-
-.futuro {
-    width: 20%;
-
-    height: 20%;
-
-    color: #999;
-
-    border-style: dashed;
+.encabezado {
+    min-height: 76px;
+    padding: 12px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: white;
+    background: var(--azul-oscuro);
 }
 
-
-/* PRIMER ESPACIO FUTURO */
-
-.futuro-1 {
-    right: 5%;
-
-    top: 15%;
+.identidad {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 230px;
 }
 
-
-/* SEGUNDO ESPACIO FUTURO */
-
-.futuro-2 {
-    right: 5%;
-
-    bottom: 15%;
+.logo {
+    padding: 10px;
+    border: 1px solid #8bb7dc;
+    border-radius: 7px;
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
+.identidad strong,
+.identidad span {
+    display: block;
+}
 
-/* =========================================
+.identidad strong {
+    font-size: 13px;
+}
+
+.identidad span {
+    margin-top: 4px;
+    font-size: 11px;
+    color: #c4d4e5;
+}
+
+.titulo-principal {
+    text-align: center;
+}
+
+.titulo-principal h1 {
+    margin: 0;
+    font-size: clamp(15px, 1.6vw, 22px);
+}
+
+.titulo-principal p {
+    margin: 5px 0 0;
+    color: #c4d4e5;
+    font-size: 12px;
+}
+
+.usuario {
+    min-width: 95px;
+    text-align: right;
+    font-size: 12px;
+}
+
+.usuario span,
+.usuario small {
+    display: block;
+}
+
+.usuario small {
+    margin-top: 4px;
+    color: #c4d4e5;
+}
+
+/* ========================================
+   DISTRIBUCIÓN PRINCIPAL
+======================================== */
+
+.aplicacion {
+    display: grid;
+    grid-template-columns: 225px minmax(0, 1fr);
+    min-height: calc(100vh - 140px);
+}
+
+/* ========================================
+   BARRA LATERAL
+======================================== */
+
+.barra-lateral {
+    padding: 20px 12px;
+    color: white;
+    background: var(--azul-panel);
+}
+
+.barra-lateral h2 {
+    margin: 0 0 12px;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.item-nav,
+.item-area {
+    width: 100%;
+    border: 0;
+    border-radius: 6px;
+    color: #e6edf5;
+    background: transparent;
+    text-align: left;
+}
+
+.item-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 10px;
+    margin-bottom: 4px;
+    font-size: 13px;
+}
+
+.item-nav span {
+    width: 20px;
+    text-align: center;
+    font-size: 17px;
+}
+
+.item-nav:hover,
+.item-nav.activo {
+    background: #17599b;
+}
+
+.separador {
+    height: 1px;
+    margin: 18px 0;
+    background: #38516b;
+}
+
+.item-area {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 5px;
+    font-size: 12px;
+}
+
+.item-area:hover,
+.item-area.activo {
+    background: #1b405e;
+}
+
+.numero {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    color: white;
+    background: #1597ae;
+    font-weight: bold;
+}
+
+.item-area.pendiente {
+    flex-wrap: wrap;
+    opacity: 0.75;
+}
+
+.item-area small {
+    width: 100%;
+    margin-left: 33px;
+    color: #b7c9d9;
+}
+
+.nota-lateral {
+    margin-top: 22px;
+    padding: 10px;
+    color: #b7c9d9;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   CONTENIDO CENTRAL
+======================================== */
+
+.contenido {
+    min-width: 0;
+    padding: 14px;
+}
+
+.panel-superior {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.panel-vista,
+.panel-area,
+.panel-secundario {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    background: var(--blanco);
+    box-shadow: 0 2px 7px rgba(15, 35, 55, 0.05);
+}
+
+.titulo-panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 43px;
+    padding: 10px 13px;
+    color: white;
+    background: var(--azul-panel);
+}
+
+.titulo-panel h2 {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.3px;
+}
+
+/* ========================================
+   VISTA GENERAL DEL HOSPITAL
+======================================== */
+
+.controles-zoom {
+    display: flex;
+    gap: 5px;
+}
+
+.controles-zoom button {
+    width: 29px;
+    height: 27px;
+    border: 1px solid #597188;
+    border-radius: 5px;
+    color: white;
+    background: #203d58;
+    font-size: 18px;
+}
+
+.controles-zoom button:hover {
+    background: var(--azul);
+}
+
+.visor-hospital {
+    position: relative;
+    height: clamp(300px, 47vw, 530px);
+    overflow: hidden;
+    background: #dfe7ed;
+}
+
+.visor-hospital img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 0.2s ease;
+}
+
+/* Marcador provisional: cambiar la posición cuando
+   se confirme dónde está el Centro Quirúrgico. */
+
+.marcador-area {
+    position: absolute;
+    left: 60%;
+    top: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    border: 3px solid white;
+    border-radius: 50% 50% 50% 0;
+    color: white;
+    background: #087f9d;
+    box-shadow: 0 2px 8px #0005;
+    font-weight: bold;
+    rotate: -45deg;
+}
+
+.marcador-area:hover {
+    background: var(--azul);
+}
+
+.marcador-area::first-line {
+    rotate: 45deg;
+}
+
+.pie-vista {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 9px 12px;
+    color: var(--texto-secundario);
+    font-size: 10px;
+}
+
+/* ========================================
+   INFORMACIÓN DEL ÁREA
+======================================== */
+
+.contenido-area {
+    padding: 15px;
+}
+
+.encabezado-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.numero-grande {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: white;
+    background: #1597ae;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.encabezado-area h3 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.encabezado-area p {
+    margin: 5px 0 0;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.imagen-area {
+    height: 155px;
+    margin-bottom: 13px;
+    overflow: hidden;
+    border-radius: 7px;
+    background: #e4ebf0;
+}
+
+.imagen-area img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.descripcion-area {
+    color: #526579;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.boton-principal {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    background: var(--azul);
+    font-size: 12px;
+}
+
+.boton-principal:hover,
+.boton-ficha:hover {
+    background: #104d82;
+}
+
+/* ========================================
+   PANELES INFERIORES
+======================================== */
+
+.paneles-inferiores {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.pestanas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+    padding: 8px;
+    border-bottom: 1px solid var(--borde);
+}
+
+.pestana {
+    flex: 1;
+    min-width: 70px;
+    padding: 9px 5px;
+    border: 0;
+    border-radius: 4px;
+    color: #526579;
+    background: transparent;
+    font-size: 11px;
+}
+
+.pestana:hover,
+.pestana.activa {
+    color: #145a91;
+    background: var(--azul-claro);
+    font-weight: bold;
+}
+
+.visor-capas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 190px;
+    padding: 20px;
+    text-align: center;
+    background: #f8fafc;
+}
+
+.icono-plano {
+    color: #4a779b;
+    font-size: 42px;
+}
+
+.visor-capas h3 {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.visor-capas p {
+    margin: 0 0 12px;
+    color: var(--texto-secundario);
+    font-size: 12px;
+}
+
+.estado-plano {
+    padding: 6px 10px;
+    border-radius: 20px;
+    color: #725b1d;
+    background: #fff2c8;
+    font-size: 10px;
+}
+
+/* ========================================
+   LISTADO DE EQUIPOS
+======================================== */
+
+.lista-equipos {
+    padding: 8px 12px;
+}
+
+.equipo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #e6ebf0;
+}
+
+.icono-equipo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 45px;
+    height: 45px;
+    border-radius: 6px;
+    color: #27618d;
+    background: #edf3f8;
+    font-size: 23px;
+}
+
+.datos-equipo {
+    flex: 1;
+    min-width: 0;
+}
+
+.datos-equipo h3 {
+    margin: 0 0 5px;
+    font-size: 12px;
+}
+
+.datos-equipo p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: 10px;
+}
+
+.boton-ficha {
+    flex-shrink: 0;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background: var(--azul);
+    font-size: 11px;
+}
+
+.nota-equipos {
+    color: var(--texto-secundario);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ========================================
+   BARRA INFERIOR
+======================================== */
+
+.barra-inferior {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 9px 15px;
+    border-top: 1px solid #344b62;
+    color: white;
+    background: var(--azul-oscuro);
+}
+
+.barra-inferior button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 105px;
+    padding: 8px;
+    border: 0;
+    border-right: 1px solid #344b62;
+    color: #e0e9f2;
+    background: transparent;
+    font-size: 11px;
+}
+
+.barra-inferior button:last-child {
+    border-right: none;
+}
+
+.barra-inferior button span {
+    font-size: 21px;
+}
+
+.barra-inferior button:hover {
+    color: white;
+    background: #193956;
+}
+
+/* ========================================
    VENTANAS MODALES
-========================================= */
+======================================== */
 
 .modal {
     display: none;
-
     position: fixed;
-
     z-index: 1000;
-
-    left: 0;
-
-    top: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background-color: rgba(0, 0, 0, 0.65);
-
-    /*
-       Permite desplazarse si el contenido
-       es más grande que la pantalla.
-    */
-
-    overflow: auto;
-
-    padding: 20px;
+    inset: 0;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 30px 15px;
+    background: rgba(3, 14, 27, 0.72);
 }
-
-
-/* =========================================
-   CONTENIDO GENERAL DE LAS VENTANAS
-========================================= */
 
 .modal-contenido {
-
-    background-color: white;
-
     position: relative;
-
-    margin: 20px auto;
-
-    padding: 35px;
-
+    width: 100%;
+    max-width: 900px;
+    max-height: calc(100vh - 60px);
+    margin: auto;
+    padding: 30px;
+    overflow-y: auto;
     border-radius: 12px;
-
+    background: white;
 }
 
-
-/* =========================================
-   MODAL DEL SERVICIO DE CIRUGÍA
-========================================= */
-
-.modal-servicio {
-
-    width: 100%;
-
+.modal-contenido.modal-ancho {
     max-width: 1300px;
-
 }
 
-
-/* =========================================
-   PLANO DEL SERVICIO
-========================================= */
-
-.plano-cirugia {
-
-    position: relative;
-
-    width: 100%;
-
-    margin: 10px auto 0;
+.modal-contenido h2 {
+    padding-right: 35px;
 }
 
-
-/* Imagen del servicio */
-
-.plano-cirugia img {
-
-    width: 100%;
-
-    height: auto;
-
-    display: block;
-
-    border-radius: 8px;
+.modal-contenido p,
+.modal-contenido li {
+    line-height: 1.6;
 }
-
-
-/* =========================================
-   ZONA CLICKEABLE DEL QUIRÓFANO 1
-========================================= */
-
-.zona-quirofano-1 {
-
-    position: absolute;
-
-    /*
-       Ubicación aproximada del primer quirófano.
-    */
-
-    left: 14%;
-
-    top: 8%;
-
-    width: 14%;
-
-    height: 24%;
-
-    background: transparent;
-
-    border: none;
-
-    padding: 0;
-
-    cursor: pointer;
-}
-
-
-/* Cuando pasás el mouse */
-
-.zona-quirofano-1:hover {
-
-    background: rgba(0, 100, 255, 0.15);
-
-    border: 2px solid #0066cc;
-
-    border-radius: 10px;
-}
-
-
-/* =========================================
-   TEXTO OCULTO
-========================================= */
-
-.visually-hidden {
-
-    position: absolute;
-
-    width: 1px;
-
-    height: 1px;
-
-    overflow: hidden;
-
-    clip: rect(0, 0, 0, 0);
-
-    white-space: nowrap;
-}
-
-
-/* =========================================
-   MODAL DEL QUIRÓFANO
-========================================= */
-
-.modal-quirofano {
-
-    /*
-       El ancho se adapta al contenido.
-       Esto permite que la imagen conserve
-       su tamaño natural.
-    */
-
-    width: fit-content;
-
-    max-width: none;
-
-    min-width: 600px;
-}
-
-
-/* =========================================
-   IMAGEN DEL QUIRÓFANO
-========================================= */
-
-.imagen-quirofano {
-
-    width: fit-content;
-
-    margin: 25px 0;
-}
-
-
-/*
-   IMPORTANTE:
-   No reducimos la imagen.
-
-   width: auto mantiene su tamaño natural.
-*/
-
-.imagen-quirofano img {
-
-    width: auto;
-
-    height: auto;
-
-    max-width: none;
-
-    display: block;
-
-    border-radius: 8px;
-}
-
-.imagen-quirofano-principal {
-    width: 100%;
-    margin: 25px 0;
-}
-
-.imagen-quirofano-principal img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 8px;
-}
-
-/* =========================================
-   INFORMACIÓN
-========================================= */
-
-.informacion {
-
-    width: 100%;
-
-    max-width: 818px;
-}
-
-
-.informacion h3 {
-
-    margin-top: 30px;
-
-    border-bottom: 2px solid #4caf50;
-
-    padding-bottom: 8px;
-}
-
-
-.informacion li {
-
-    margin-bottom: 8px;
-}
-
-
-/* =========================================
-   BOTÓN CERRAR
-========================================= */
 
 .cerrar {
-
     position: absolute;
-
-    top: 15px;
-
-    right: 20px;
-
-    border: none;
-
-    background: none;
-
-    font-size: 35px;
-
-    cursor: pointer;
-
-    color: #555;
-
-    z-index: 10;
+    top: 12px;
+    right: 15px;
+    border: 0;
+    color: #526579;
+    background: transparent;
+    font-size: 30px;
 }
-
 
 .cerrar:hover {
-
-    color: black;
+    color: #111;
 }
 
+/* ========================================
+   RESPONSIVE
+======================================== */
 
-/* =========================================
-   ADAPTACIÓN PARA CELULARES
-========================================= */
-
-@media (max-width: 600px) {
-
-
-    /* -----------------------------
-       ENCABEZADO
-    ----------------------------- */
-
-    header {
-
-        padding: 18px 10px;
+@media (max-width: 1100px) {
+    .aplicacion {
+        grid-template-columns: 190px minmax(0, 1fr);
     }
 
-
-    header h1 {
-
-        font-size: 25px;
+    .panel-superior {
+        grid-template-columns: minmax(0, 1fr) 260px;
     }
 
-
-    header p {
-
-        font-size: 14px;
+    .identidad {
+        min-width: auto;
     }
 
-
-    /* -----------------------------
-       CONTENIDO
-    ----------------------------- */
-
-    main {
-
-        width: 94%;
-
-        margin: 20px auto;
+    .usuario {
+        display: none;
     }
 
+    .paneles-inferiores {
+        grid-template-columns: 1fr;
+    }
+}
 
-    /* -----------------------------
-       HOSPITAL
-    ----------------------------- */
-
-    .hospital {
-
-        min-height: 500px;
-
-        padding: 10px;
-
-        border-width: 3px;
+@media (max-width: 760px) {
+    .encabezado {
+        flex-wrap: wrap;
+        padding: 12px;
     }
 
-
-    /* -----------------------------
-       SERVICIO DE CIRUGÍA
-    ----------------------------- */
-
-    .servicio-quirofano {
-
-        /*
-           En celular ocupa una parte
-           proporcional del hospital.
-        */
-
-        left: 10%;
-
-        top: 15%;
-
-        width: 65%;
-
-        height: 40%;
+    .titulo-principal {
+        order: 3;
+        width: 100%;
+        text-align: left;
     }
 
+    .aplicacion {
+        display: block;
+    }
 
-    .servicio-quirofano h3 {
+    .barra-lateral {
+        padding: 12px;
+    }
 
-        font-size: 16px;
+    .barra-lateral h2,
+    .separador,
+    .item-area,
+    .nota-lateral {
+        display: none;
+    }
 
+    .barra-lateral {
+        display: flex;
+        gap: 5px;
+        overflow-x: auto;
+    }
+
+    .item-nav {
+        flex: 0 0 auto;
+        width: auto;
+        margin: 0;
+        font-size: 11px;
+    }
+
+    .contenido {
         padding: 10px;
     }
 
-
-    /* -----------------------------
-       ACCESO
-    ----------------------------- */
-
-    .acceso {
-
-        left: 10px;
-
-        bottom: 10px;
-
-        width: 120px;
-
-        height: 55px;
-
-        font-size: 14px;
+    .panel-superior {
+        grid-template-columns: 1fr;
     }
 
-
-    /* -----------------------------
-       ESPACIOS FUTUROS
-    ----------------------------- */
-
-    .futuro {
-
-        width: 20%;
-
-        height: 15%;
-
-        font-size: 12px;
+    .visor-hospital {
+        height: 330px;
     }
 
-
-    /* -----------------------------
-       MODALES
-    ----------------------------- */
-
-    .modal {
-
-        padding: 10px;
+    .paneles-inferiores {
+        grid-template-columns: 1fr;
     }
 
+    .pie-vista {
+        flex-direction: column;
+    }
+
+    .barra-inferior {
+        flex-wrap: wrap;
+    }
+
+    .barra-inferior button {
+        flex: 1 0 40%;
+        border-bottom: 1px solid #344b62;
+    }
 
     .modal-contenido {
-
-        padding: 25px 15px;
-
-        margin: 10px auto;
+        padding: 22px 17px;
     }
-
-
-    /* -----------------------------
-       MODAL SERVICIO
-    ----------------------------- */
-
-    .modal-servicio {
-
-        width: 100%;
-
-        max-width: 100%;
-    }
-
-
-    /*
-       El plano del servicio sí se adapta
-       al celular.
-    */
-
-    .plano-cirugia img {
-
-        width: 100%;
-
-        height: auto;
-    }
-
-
-    /* -----------------------------
-       MODAL QUIRÓFANO
-    ----------------------------- */
-
-    .modal-quirofano {
-
-        /*
-           La ventana puede ser más grande
-           que la pantalla si la imagen
-           conserva su tamaño natural.
-        */
-
-        min-width: 600px;
-
-        width: fit-content;
-
-        margin-left: 0;
-
-        margin-right: 0;
-    }
-
-
-    /*
-       La imagen del quirófano conserva
-       su tamaño original.
-    */
-
-    .imagen-quirofano img {
-
-        width: auto;
-
-        max-width: none;
-
-        height: auto;
-    }
-
-
-    .informacion {
-
-        max-width: 818px;
-    }
-
 }

@@ -1,69 +1,349 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Hospital Virtual</title>
-
+    <title>Hospital Universitario Virtual FIUNER</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
 
     <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <div class="identidad">
+            <div class="logo">FIUNER</div>
+            <div>
+                <strong>Facultad de Ingeniería</strong>
+                <span>Universidad Nacional de Entre Ríos</span>
+            </div>
+        </div>
 
-    <header>
-        <h1>Hospital Virtual</h1>
-        <p>Ingeniería Hospitalaria y Clínica</p>
+        <div class="titulo-principal">
+            <h1>HOSPITAL UNIVERSITARIO VIRTUAL FIUNER</h1>
+            <p>Plataforma de aprendizaje en Ingeniería Clínica y Hospitalaria</p>
+        </div>
+
+        <div class="usuario">
+            <span>Estudiante</span>
+            <small>Nivel 1</small>
+        </div>
     </header>
 
+    <div class="aplicacion">
 
-    <!-- CONTENIDO PRINCIPAL -->
+        <!-- BARRA LATERAL -->
+        <aside class="barra-lateral">
 
-    <main>
+            <h2>NAVEGACIÓN</h2>
 
-        <h2>Hospital</h2>
+            <button class="item-nav activo"
+                    onclick="mostrarVistaGeneral()">
+                <span>⌂</span> Vista general
+            </button>
 
+            <button class="item-nav"
+                    onclick="seleccionarArea()">
+                <span>▦</span> Centro quirúrgico
+            </button>
 
-        <!-- REPRESENTACIÓN DEL HOSPITAL -->
+            <button class="item-nav"
+                    onclick="mostrarSeccion('Instalaciones')">
+                <span>⚙</span> Instalaciones
+            </button>
 
-        <section class="hospital">
+            <button class="item-nav"
+                    onclick="mostrarSeccion('Equipamiento')">
+                <span>▣</span> Equipamiento
+            </button>
 
-            <!-- ACCESO -->
+            <button class="item-nav"
+                    onclick="mostrarSeccion('Gestión tecnológica')">
+                <span>◇</span> Gestión tecnológica
+            </button>
 
-            <div class="zona acceso">
-                <span>Acceso</span>
-            </div>
+            <div class="separador"></div>
 
+            <h2>ÁREAS DEL HOSPITAL</h2>
 
-            <!-- SERVICIO DE QUIRÓFANO -->
+            <button class="item-area activo"
+                    onclick="seleccionarArea()">
+                <span class="numero">1</span>
+                Centro quirúrgico
+            </button>
 
-            <div class="zona servicio-quirofano"
-                 onclick="abrirServicioCirugia()">
+            <button class="item-area pendiente"
+                    onclick="mostrarSeccion('Área pendiente de incorporar')">
+                <span class="numero">2</span>
+                Otras áreas
+                <small>Próximamente</small>
+            </button>
 
-                <h3>Servicio de Cirugía</h3>
+            <p class="nota-lateral">
+                Las áreas y su ubicación se completarán
+                a partir de los planos definitivos.
+            </p>
 
-            </div>
+        </aside>
 
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="contenido">
 
-            <!-- ESPACIOS FUTUROS -->
+            <!-- VISTA GENERAL + INFORMACIÓN DEL ÁREA -->
+            <section class="panel-superior">
 
-            <div class="zona futuro futuro-1">
-                <span>Próximamente</span>
-            </div>
+                <!-- VISTA DEL HOSPITAL -->
+                <div class="panel-vista">
 
-            <div class="zona futuro futuro-2">
-                <span>Próximamente</span>
-            </div>
+                    <div class="titulo-panel">
+                        <h2>VISTA GENERAL DEL HOSPITAL</h2>
 
-        </section>
+                        <div class="controles-zoom">
+                            <button onclick="cambiarZoom(-0.1)"
+                                    aria-label="Alejar">−</button>
 
-    </main>
+                            <button onclick="cambiarZoom(0.1)"
+                                    aria-label="Acercar">+</button>
 
+                            <button onclick="restablecerZoom()"
+                                    aria-label="Restablecer zoom">⟳</button>
+                        </div>
+                    </div>
 
+                    <div class="visor-hospital" id="visorHospital">
 
+                        <img
+                            id="imagenHospital"
+                            src="imagenes/hospital-general.png"
+                            alt="Vista general del hospital"
+                        >
+
+                        <!-- MARCADOR PROVISIONAL.
+                             Moverlo cuando se confirme la ubicación
+                             real del Centro Quirúrgico. -->
+                        <button
+                            class="marcador-area"
+                            id="marcadorCirugia"
+                            onclick="seleccionarArea()"
+                            title="Ubicación de prueba: Centro Quirúrgico">
+                            1
+                        </button>
+
+                    </div>
+
+                    <div class="pie-vista">
+                        <span>Vista general ilustrativa</span>
+                        <span>Ubicación de las áreas pendiente de confirmar</span>
+                    </div>
+
+                </div>
+
+                <!-- PANEL DE INFORMACIÓN DEL ÁREA -->
+                <aside class="panel-area">
+
+                    <div class="titulo-panel">
+                        <h2>INFORMACIÓN DEL ÁREA</h2>
+                    </div>
+
+                    <div class="contenido-area">
+
+                        <div class="encabezado-area">
+                            <span class="numero-grande">1</span>
+                            <div>
+                                <h3>Centro quirúrgico</h3>
+                                <p>Área de acceso restringido</p>
+                            </div>
+                        </div>
+
+                        <div class="imagen-area">
+                            <img
+                                src="imagenes/quirofano-principal.png"
+                                alt="Imagen ilustrativa de un quirófano"
+                            >
+                        </div>
+
+                        <p class="descripcion-area">
+                            Área destinada a procedimientos quirúrgicos.
+                            Su organización comprende los ambientes,
+                            las instalaciones y el equipamiento necesarios
+                            para su funcionamiento.
+                        </p>
+
+                        <button class="boton-principal"
+                                onclick="abrirInformacionArea()">
+                            Ver información del área
+                        </button>
+
+                    </div>
+
+                </aside>
+
+            </section>
+
+            <!-- PANELES INFERIORES -->
+            <section class="paneles-inferiores">
+
+                <!-- CAPAS TÉCNICAS -->
+                <div class="panel-secundario">
+
+                    <div class="titulo-panel">
+                        <h2>CAPAS DE INFORMACIÓN</h2>
+                    </div>
+
+                    <div class="pestanas">
+                        <button class="pestana activa"
+                                onclick="cambiarCapa('Arquitectura', this)">
+                            Arquitectura
+                        </button>
+
+                        <button class="pestana"
+                                onclick="cambiarCapa('Eléctrica', this)">
+                            Eléctrica
+                        </button>
+
+                        <button class="pestana"
+                                onclick="cambiarCapa('Gases', this)">
+                            Gases
+                        </button>
+
+                        <button class="pestana"
+                                onclick="cambiarCapa('Climatización', this)">
+                            Climatización
+                        </button>
+                    </div>
+
+                    <div class="visor-capas" id="visorCapas">
+                        <div class="icono-plano">▤</div>
+
+                        <h3 id="tituloCapa">Arquitectura</h3>
+
+                        <p id="descripcionCapa">
+                            Distribución de ambientes y circulación.
+                        </p>
+
+                        <span class="estado-plano">
+                            Plano pendiente de incorporar
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- EQUIPAMIENTO -->
+                <div class="panel-secundario">
+
+                    <div class="titulo-panel">
+                        <h2>EQUIPAMIENTO DEL ÁREA</h2>
+                    </div>
+
+                    <div class="lista-equipos">
+
+                        <article class="equipo">
+                            <div class="icono-equipo">⚡</div>
+
+                            <div class="datos-equipo">
+                                <h3>Electrobisturí</h3>
+                                <p>Equipamiento quirúrgico</p>
+                            </div>
+
+                            <button class="boton-ficha"
+                                    onclick="abrirElectrobisturi()">
+                                Ver ficha
+                            </button>
+                        </article>
+
+                        <article class="equipo">
+                            <div class="icono-equipo">▣</div>
+
+                            <div class="datos-equipo">
+                                <h3>Carro de anestesia</h3>
+                                <p>Equipamiento anestésico</p>
+                            </div>
+
+                            <button class="boton-ficha"
+                                    onclick="abrirCarroAnestesia()">
+                                Ver ficha
+                            </button>
+                        </article>
+
+                        <p class="nota-equipos">
+                            Se incorporarán más equipos a medida que
+                            se complete el inventario del área.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- BARRA INFERIOR -->
+    <footer class="barra-inferior">
+
+        <button onclick="mostrarSeccion('Normativa')">
+            <span>⚖</span>
+            Normativa
+        </button>
+
+        <button onclick="mostrarSeccion('Riesgos')">
+            <span>⚠</span>
+            Riesgos
+        </button>
+
+        <button onclick="mostrarSeccion('Mantenimiento')">
+            <span>⚙</span>
+            Mantenimiento
+        </button>
+
+        <button onclick="mostrarSeccion('Manuales')">
+            <span>▤</span>
+            Manuales
+        </button>
+
+    </footer>
+
+    <!-- VENTANA DE INFORMACIÓN DEL ÁREA -->
+    <div id="ventanaArea" class="modal">
+        <div class="modal-contenido">
+            <button class="cerrar"
+                    onclick="cerrarModal('ventanaArea')">×</button>
+
+            <h2>Centro quirúrgico</h2>
+
+            <p>
+                En esta sección se incorporará la información del área,
+                incluyendo distribución arquitectónica, instalaciones,
+                equipamiento y documentación técnica.
+            </p>
+
+            <button class="boton-principal"
+                    onclick="cerrarModal('ventanaArea'); abrirServicioCirugia();">
+                Consultar plano del servicio
+            </button>
+        </div>
+    </div>
+
+    <!-- VENTANA PARA NORMATIVA, RIESGOS Y OTRAS SECCIONES -->
+    <div id="ventanaSeccion" class="modal">
+        <div class="modal-contenido">
+            <button class="cerrar"
+                    onclick="cerrarModal('ventanaSeccion')">×</button>
+
+            <h2 id="tituloSeccion">Sección</h2>
+
+            <p id="descripcionSeccion">
+                El contenido de esta sección se incorporará posteriormente.
+            </p>
+        </div>
+    </div>
+
+    <!-- ================================================== -->
+    <!-- CONSERVAR AQUÍ LAS VENTANAS QUE YA TENÍAS -->
+    <!-- ================================================== -->
     <!-- ========================================= -->
     <!-- VENTANA DEL SERVICIO DE CIRUGÍA -->
     <!-- ========================================= -->
@@ -143,15 +423,22 @@
 
             </div>
 
-            <!-- IMAGEN DEL QUIRÓFANO -->
+            <!-- PLANO DEL QUIRÓFANO -->
+            <div class="plano-quirofano">
+                <img src="imagenes/quirofano-1.png" alt="Plano del Quirófano 1">
 
-            <div class="imagen-quirofano">
+                <!-- REFERENCIA 21: ELECTROBISTURÍ -->
+                <button class="referencia referencia-electrobisturi"
+                        onclick="abrirElectrobisturi()">
+                    21
+                </button>
 
-                <img src="imagenes/quirofano-1.png"
-                     alt="Plano del Quirófano 1">
-
+                <!-- REFERENCIA 17: CARRO DE ANESTESIA -->
+                <button class="referencia referencia-anestesia"
+                        onclick="abrirCarroAnestesia()">
+                    17
+                </button>
             </div>
-
 
 
             <!-- INFORMACIÓN -->
@@ -221,12 +508,115 @@
 
     </div>
 
+    <!-- ========================================= -->
+    <!-- VENTANA DEL QUIRÓFANO -->
+    <!-- ========================================= -->
+
+    <div id="ventanaElectrobisturi" class="modal">
+         <div class="modal-contenido">
+             <button class="cerrar" onclick="cerrarElectrobisturi()">×</button>
+
+            <h2>Electrobisturí</h2>
+            <p>
+                Es un equipo médico que utiliza energía eléctrica de alta frecuencia para realizar corte, coagulación o una combinación de ambos sobre tejidos durante procedimientos quirúrgicos.
+            </p>
+            <h3>¿Para qué sirve?</h3>
+            <p>
+                Permite realizar cortes quirúrgicos y controlar el sangrado
+                mediante diferentes modos de funcionamiento. 
+            </p>
+            <h3>Link Medevis</h3>
+
+            <ul>
+                <li>https://medevis.who-healthtechnologies.org/devices/COM_002 </li>
+                <li>https://medevis.who-healthtechnologies.org/devices/SUR_088</li>
+                <li>https://medevis.who-healthtechnologies.org/devices/COM_377</li>
+            </ul>
+
+            <h3>Regulaciones</h3>
+
+            <ul>
+                <li>IEC 60601-2-2: Medical electrical equipment. Part 2-2: Particular requirements for the basic safety and essential performance of high frequency surgical equipment and high frequency surgical accessories.</li>
+                <li>IEC 60601-1: Medical electrical equipment. Part 1: General requirements for basic safety and essential performance.</li>
+                <li>IEC 60601-1-2: Medical electrical equipment. Part 1-2: Electromagnetic disturbances. Requirements and tests.</li>
+            </ul>
+
+            <h3>Mitigación de riesgos</h3>
+
+            <ul>
+                <li> Utilización de electrodos de retorno adecuados y correctamente colocados para proporcionar un camino seguro de retorno de la corriente y reducir el riesgo de quemaduras.</li>
+                <li> Monitoreo del electrodo de retorno para detectar condiciones de contacto inadecuado y reducir el riesgo de lesión térmica.</li>
+                <li> Utilización de sistemas de control de potencia y límites de salida para evitar una entrega de energía excesiva.</li>
+                <li> Uso de alarmas y sistemas de protección ante fallas del equipo, del circuito o del electrodo de retorno.</li>
+                <li> Utilización de accesorios compatibles y conexiones adecuadas para evitar conexiones incorrectas o activaciones no deseadas.</li>
+                <li> Uso de modo bipolar cuando sea apropiado para limitar el recorrido de la corriente a través del tejido entre los dos polos del instrumento.</li>
+                <li> Inspección de cables, electrodos y accesorios para detectar daños, deterioro o aislamiento defectuoso antes de su utilización.</li>
+                <li> Capacitación del personal sobre selección del modo, potencia, tipo de electrodo y correcta utilización del equipo.</li>
+                <li> Evitar el contacto de electrodos activos con superficies conductoras o materiales inflamables para reducir riesgos de quemaduras, chispas e incendio.</li>
+            </ul>
 
 
-    <!-- JAVASCRIPT -->
+         </div>
+
+    </div>
+
+    <!-- =========================================
+    VENTANA DEL CARRO DE ANESTESIA
+    ========================================= -->
+    
+    <div id="ventanaCarroAnestesia" class="modal">
+        
+        <div class="modal-contenido">
+            <button class="cerrar" onclick="cerrarCarroAnestesia()">×</button>
+            
+            <h2>Carro de anestesia</h2>
+            
+            <p>
+                El carro o máquina de anestesia reúne los elementos necesarios
+                para administrar y controlar la anestesia durante un
+                procedimiento quirúrgico.
+            </p>
+            
+            <h3>¿Para qué sirve?</h3>
+            
+            <p>
+                Permite administrar gases y agentes anestésicos y colaborar
+                con el mantenimiento de la ventilación del paciente durante
+                la intervención.
+            </p>
+            
+            <h3>Elementos principales</h3>
+            
+            <ul>
+                <li>Sistema de suministro de gases</li>
+                <li>Ventilador</li>
+                <li>Sistema de respiración</li>
+                <li>Monitoreo</li>
+                <li>Sistema de evacuación de gases</li>
+            </ul>
+            
+            <h3>Infraestructura relacionada</h3>
+            
+            <ul>
+                <li>Gases medicinales</li>
+                <li>Instalación eléctrica</li>
+                <li>Evacuación de gases anestésicos</li>
+            </ul>
+        </div>
+    </div>
+    <!--
+      COPIAR DESDE TU INDEX.HTML ANTERIOR LOS BLOQUES COMPLETOS:
+
+      1. <div id="ventanaServicioCirugia" ...> ... </div>
+      2. <div id="ventanaQuirofano" ...> ... </div>
+      3. <div id="ventanaElectrobisturi" ...> ... </div>
+      4. <div id="ventanaCarroAnestesia" ...> ... </div>
+
+      No copies el HTML completo anterior: solamente esos cuatro
+      bloques de ventanas, incluyendo todo su contenido.
+    -->
 
     <script src="script.js"></script>
 
 </body>
-
 </html>
