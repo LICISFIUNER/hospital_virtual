@@ -206,17 +206,17 @@ const fichasEquipos = {
 
         // Escribí la ruta cuando tengas la imagen.
         // Por ejemplo: "imagenes/mesa-anestesia.jpg"
-        foto: "",
+        foto: "imagenes/maquina_de_anestesia.jpg",
 
         descripcion:
-            "Equipo biomédico diseñado para generar y mezclar gases médicos (O₂, Aire, N₂O) con agentes anestésicos volátiles.",
+            "Equipo biomédico diseñado para generar y mezclar gases médicos (O₂, Aire, N₂O) con agentes anestésicos volátiles, regulando la dosificación por inhalación para inducir y mantener la anestesia general.",
 
         uso:
-            "Soporte vital y anestesia en intervenciones quirúrgicas.",
+            "Equipo biomédico diseñado para generar y mezclar gases médicos (O₂, Aire, N₂O) con agentes anestésicos volátiles, regulando la dosificación por inhalación para inducir y mantener la anestesia general.",
 
         requerimientos: [
-            "Gases: O₂, Aire y N₂O (3.5 - 5 bar)",
-            "Eléctrico: 220V AC con respaldo UPS"
+            "Gases: O₂, Aire y N₂O ",
+            "Eléctrico: 220V AC"
         ],
 
         accesorios: [
@@ -228,24 +228,32 @@ const fichasEquipos = {
 
         riesgos: [
             "Hipoxia difusional por falla en O₂",
-            "Barotrauma por sobrepresión"
+            "Barotrauma por sobrepresión o mal ajuste de la válvula APL.",
+            "Discrepancia en la concentración del anestésico por variaciones térmicas o dilución en bajo flujo.", 
+            "Fugas de gases anestésicos al ambiente del quirófano."
         ],
 
         mitigacion: [
-            "Sistema antihipóxico",
-            "Válvula APL de seguridad",
+            "Sistema antihipóxico (límite mínimo de 27–30% de O₂)",
+            "Válvula APL de seguridad para escape de exceso de gas.",
+            "Vaporizadores compensados bimetálicamente. ",
             "Sistema Scavenging"
         ],
 
         mantenimiento: [
             "Calibración de celda de O₂",
-            "Pruebas diarias de hermeticidad"
+            "Pruebas diarias de hermeticidad",
+            "Reemplazo periódico de la cal sodada agotada. "
+            "Mantenimiento de válvulas y prueba de vaporizadores."
+
         ],
 
         enlaces: [
             {
                 texto: "MeDevIS WHO (COM_300)",
-                url: "https://medevis.who-healthtechnologies.org/devices/COM_300"
+                url: "https://medevis.who-healthtechnologies.org/devices/COM_300",
+                     "https://medevis.who-healthtechnologies.org/devices/COM_037"
+
             }
         ]
     }
