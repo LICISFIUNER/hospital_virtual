@@ -251,8 +251,7 @@ const fichasEquipos = {
         enlaces: [
             {
                 texto: "MeDevIS WHO (COM_300)",
-                url: "https://medevis.who-healthtechnologies.org/devices/COM_300",
-                     "https://medevis.who-healthtechnologies.org/devices/COM_037"
+                url: "https://medevis.who-healthtechnologies.org/devices/COM_300"
 
             }
         ]
