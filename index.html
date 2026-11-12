@@ -265,6 +265,21 @@
                                 Ver ficha
                             </button>
                         </article>
+                         <article class="equipo">
+                        <div class="icono-equipo">▣</div>
+                    
+                        <div class="datos-equipo">
+                            <h3>Monitor multiparamétrico</h3>
+                            <p>Equipamiento de monitorización</p>
+                        </div>
+                    
+                        <button
+                            type="button"
+                            class="boton-ficha"
+                            onclick="abrirMonitor()">
+                            Ver ficha
+                        </button>
+                    </article>
 
                         <p class="nota-equipos">
                             Se incorporarán más equipos a medida que
@@ -438,6 +453,13 @@
                         onclick="abrirCarroAnestesia()">
                     17
                 </button>
+                <button
+                type="button"
+                class="referencia referencia-monitor"
+                onclick="abrirMonitor()"
+                aria-label="Ver ficha del monitor multiparamétrico">
+                M
+                </button>
             </div>
 
 
@@ -512,49 +534,17 @@
     <!-- VENTANA DEL QUIRÓFANO -->
     <!-- ========================================= -->
 
-    <div id="ventanaElectrobisturi" class="modal">
+    <div id="ventanaElectrobisturi" class="modal ficha-equipo">
          <div class="modal-contenido">
-             <button class="cerrar" onclick="cerrarElectrobisturi()">×</button>
+          <button
+            type="button"
+            class="cerrar"
+            onclick="cerrarElectrobisturi()"
+            aria-label="Cerrar ficha">
+            ×
+        </button>
 
-            <h2>Electrobisturí</h2>
-            <p>
-                Es un equipo médico que utiliza energía eléctrica de alta frecuencia para realizar corte, coagulación o una combinación de ambos sobre tejidos durante procedimientos quirúrgicos.
-            </p>
-            <h3>¿Para qué sirve?</h3>
-            <p>
-                Permite realizar cortes quirúrgicos y controlar el sangrado
-                mediante diferentes modos de funcionamiento. 
-            </p>
-            <h3>Link Medevis</h3>
-
-            <ul>
-                <li>https://medevis.who-healthtechnologies.org/devices/COM_002 </li>
-                <li>https://medevis.who-healthtechnologies.org/devices/SUR_088</li>
-                <li>https://medevis.who-healthtechnologies.org/devices/COM_377</li>
-            </ul>
-
-            <h3>Regulaciones</h3>
-
-            <ul>
-                <li>IEC 60601-2-2: Medical electrical equipment. Part 2-2: Particular requirements for the basic safety and essential performance of high frequency surgical equipment and high frequency surgical accessories.</li>
-                <li>IEC 60601-1: Medical electrical equipment. Part 1: General requirements for basic safety and essential performance.</li>
-                <li>IEC 60601-1-2: Medical electrical equipment. Part 1-2: Electromagnetic disturbances. Requirements and tests.</li>
-            </ul>
-
-            <h3>Mitigación de riesgos</h3>
-
-            <ul>
-                <li> Utilización de electrodos de retorno adecuados y correctamente colocados para proporcionar un camino seguro de retorno de la corriente y reducir el riesgo de quemaduras.</li>
-                <li> Monitoreo del electrodo de retorno para detectar condiciones de contacto inadecuado y reducir el riesgo de lesión térmica.</li>
-                <li> Utilización de sistemas de control de potencia y límites de salida para evitar una entrega de energía excesiva.</li>
-                <li> Uso de alarmas y sistemas de protección ante fallas del equipo, del circuito o del electrodo de retorno.</li>
-                <li> Utilización de accesorios compatibles y conexiones adecuadas para evitar conexiones incorrectas o activaciones no deseadas.</li>
-                <li> Uso de modo bipolar cuando sea apropiado para limitar el recorrido de la corriente a través del tejido entre los dos polos del instrumento.</li>
-                <li> Inspección de cables, electrodos y accesorios para detectar daños, deterioro o aislamiento defectuoso antes de su utilización.</li>
-                <li> Capacitación del personal sobre selección del modo, potencia, tipo de electrodo y correcta utilización del equipo.</li>
-                <li> Evitar el contacto de electrodos activos con superficies conductoras o materiales inflamables para reducir riesgos de quemaduras, chispas e incendio.</li>
-            </ul>
-
+        <div class="datos-ficha"></div>
 
          </div>
 
@@ -564,35 +554,24 @@
     VENTANA DEL CARRO DE ANESTESIA
     ========================================= -->
     
-    <div id="ventanaCarroAnestesia" class="modal">
-        
-        <div class="modal-contenido">
-            <button class="cerrar" onclick="cerrarCarroAnestesia()">×</button>
+<div id="ventanaCarroAnestesia" class="modal ficha-equipo">
+
+    <div class="modal-contenido">
+
+        <button
+            type="button"
+            class="cerrar"
+            onclick="cerrarCarroAnestesia()"
+            aria-label="Cerrar ficha">
+            ×
+        </button>
+
+        <div class="datos-ficha"></div>
+
+    </div>
+
+</div>
             
-            <h2>Carro de anestesia</h2>
-            
-            <p>
-                El carro o máquina de anestesia reúne los elementos necesarios
-                para administrar y controlar la anestesia durante un
-                procedimiento quirúrgico.
-            </p>
-            
-            <h3>¿Para qué sirve?</h3>
-            
-            <p>
-                Permite administrar gases y agentes anestésicos y colaborar
-                con el mantenimiento de la ventilación del paciente durante
-                la intervención.
-            </p>
-            
-            <h3>Elementos principales</h3>
-            
-            <ul>
-                <li>Sistema de suministro de gases</li>
-                <li>Ventilador</li>
-                <li>Sistema de respiración</li>
-                <li>Monitoreo</li>
-                <li>Sistema de evacuación de gases</li>
             </ul>
             
             <h3>Infraestructura relacionada</h3>
@@ -615,7 +594,21 @@
       No copies el HTML completo anterior: solamente esos cuatro
       bloques de ventanas, incluyendo todo su contenido.
     -->
+<div id="ventanaMonitor" class="modal ficha-equipo">
+    <div class="modal-contenido">
 
+        <button
+            type="button"
+            class="cerrar"
+            onclick="cerrarMonitor()"
+            aria-label="Cerrar ficha">
+            ×
+        </button>
+
+        <div class="datos-ficha"></div>
+
+    </div>
+</div>
     <script src="script.js"></script>
 
 </body>

@@ -646,6 +646,298 @@ button:focus-visible {
 .cerrar:hover {
     color: #111;
 }
+/* ========================================
+   FORMATO GENERAL DE LAS FICHAS DE EQUIPOS
+======================================== */
+
+/* Fondo oscuro detrás de la ficha */
+.modal.ficha-equipo {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+    background: rgb(15 23 42 / 68%);
+}
+
+/* Tamaños consistentes dentro de las fichas */
+.modal.ficha-equipo,
+.modal.ficha-equipo * {
+    box-sizing: border-box;
+}
+
+/* Ventana principal */
+.modal.ficha-equipo .modal-contenido {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 896px;
+
+    max-height: calc(100vh - 24px);
+    max-height: calc(100dvh - 24px);
+
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+    border: 1px solid #dbe3ef;
+    border-radius: 16px;
+
+    background: #ffffff;
+    color: #475569;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: left;
+
+    box-shadow: 0 20px 60px rgb(15 23 42 / 25%);
+}
+
+/* Contenedor que completa JavaScript */
+.modal.ficha-equipo .datos-ficha {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* Encabezado azul */
+.modal.ficha-equipo .datos-ficha > header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+
+    flex-shrink: 0;
+
+    margin: 0;
+    padding: 16px 60px 16px 24px;
+
+    background: #1e293b;
+    color: #ffffff;
+}
+
+/* Nombre del equipo */
+.modal.ficha-equipo .datos-ficha > header h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: normal;
+    text-transform: none;
+
+    overflow-wrap: anywhere;
+}
+
+/* Código ECRI */
+.modal.ficha-equipo .datos-ficha > header span {
+    display: inline-block;
+
+    padding: 3px 10px;
+
+    border: 1px solid #036991;
+    border-radius: 999px;
+
+    background: #16405a;
+    color: #bae6fd;
+
+    font-family: monospace;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Botón de cierre */
+.modal.ficha-equipo .cerrar {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+    border-radius: 6px;
+
+    background: transparent;
+    color: #b5c5d8;
+
+    font-family: inherit;
+    font-size: 28px;
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.modal.ficha-equipo .cerrar:hover {
+    background: rgb(255 255 255 / 10%);
+    color: #ffffff;
+}
+
+.modal.ficha-equipo .cerrar:focus-visible {
+    outline: 2px solid #7dd3fc;
+    outline-offset: 2px;
+}
+
+/* Cuerpo con texto a la izquierda y foto a la derecha */
+.modal.ficha-equipo .datos-ficha > header + div {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 24px;
+
+    flex: 1 1 auto;
+    min-height: 0;
+
+    margin: 0;
+    padding: 24px;
+
+    overflow-y: auto;
+    overscroll-behavior: contain;
+
+    background: #ffffff;
+}
+
+/* Evita que textos largos ensanchen las columnas */
+.modal.ficha-equipo .datos-ficha > header + div > div {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Usa todo el ancho cuando el equipo no tiene foto */
+.modal.ficha-equipo .datos-ficha > header + div.sin-foto {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* Títulos de las secciones */
+.modal.ficha-equipo .datos-ficha h3 {
+    margin: 18px 0 5px;
+    padding: 0 0 5px;
+
+    border: 0;
+    border-bottom: 1px solid #dbe3ef;
+
+    color: #0f172a;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-transform: none;
+}
+
+.modal.ficha-equipo .datos-ficha h3:first-child {
+    margin-top: 0;
+}
+
+/* Descripción y uso principal */
+.modal.ficha-equipo .datos-ficha p {
+    margin: 0;
+    padding: 0;
+
+    color: #475569;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Listas de accesorios, riesgos y mantenimiento */
+.modal.ficha-equipo .datos-ficha ul {
+    margin: 0;
+    padding-left: 20px;
+
+    color: #475569;
+    list-style: disc;
+}
+
+.modal.ficha-equipo .datos-ficha li {
+    margin: 2px 0;
+    padding: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Separador de la columna de la foto */
+.modal.ficha-equipo .datos-ficha > header + div:not(.sin-foto) > div:last-child {
+    padding-left: 24px;
+    border-left: 1px solid #dbe3ef;
+}
+
+/* Foto del equipo */
+.modal.ficha-equipo .datos-ficha img {
+    display: block;
+
+    width: 100%;
+    max-width: 300px;
+    max-height: 280px;
+    height: auto;
+
+    margin: 0 auto;
+    padding: 7px;
+
+    border: 1px solid #dbe3ef;
+    border-radius: 12px;
+
+    background: #f1f5f9;
+    object-fit: contain;
+}
+
+/* Enlaces a manuales y otras fuentes */
+.modal.ficha-equipo .datos-ficha a {
+    color: #0369a1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    overflow-wrap: anywhere;
+}
+
+.modal.ficha-equipo .datos-ficha a:hover {
+    color: #075985;
+}
+
+.modal.ficha-equipo .datos-ficha a:focus-visible {
+    outline: 2px solid #0284c7;
+    outline-offset: 3px;
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+    .modal.ficha-equipo {
+        padding: 8px;
+    }
+
+    .modal.ficha-equipo .modal-contenido {
+        max-height: calc(100vh - 16px);
+        max-height: calc(100dvh - 16px);
+        border-radius: 12px;
+    }
+
+    .modal.ficha-equipo .datos-ficha > header {
+        gap: 8px;
+        padding: 16px 56px 16px 16px;
+    }
+
+    .modal.ficha-equipo .datos-ficha > header h2 {
+        font-size: 18px;
+    }
 
 /* ========================================
    RESPONSIVE
