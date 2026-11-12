@@ -28,7 +28,7 @@ function cerrarElectrobisturi() {
 }
 
 function abrirCarroAnestesia() {
-    abrirModal("ventanaCarroAnestesia");
+    mostrarFichaEquipo("ventanaCarroAnestesia", fichasEquipos.anestesia);
 }
 
 function cerrarCarroAnestesia() {
@@ -192,4 +192,184 @@ function cambiarCapa(nombre, boton) {
 
     // Por ahora las capas son demostrativas.
     // Más adelante se conectarán con los planos reales.
+}
+/* ========================================
+   DATOS DE LAS FICHAS
+   Editá acá los textos de cada equipo.
+======================================== */
+
+const fichasEquipos = {
+    anestesia: {
+        nombre: "Mesa de Anestesia",
+
+        ecri: "10-134",
+
+        // Escribí la ruta cuando tengas la imagen.
+        // Por ejemplo: "imagenes/mesa-anestesia.jpg"
+        foto: "",
+
+        descripcion:
+            "Equipo biomédico diseñado para generar y mezclar gases médicos (O₂, Aire, N₂O) con agentes anestésicos volátiles.",
+
+        uso:
+            "Soporte vital y anestesia en intervenciones quirúrgicas.",
+
+        requerimientos: [
+            "Gases: O₂, Aire y N₂O (3.5 - 5 bar)",
+            "Eléctrico: 220V AC con respaldo UPS"
+        ],
+
+        accesorios: [
+            "Vaporizadores",
+            "Circuito respiratorio",
+            "Canister con cal sodada",
+            "Válvula APL"
+        ],
+
+        riesgos: [
+            "Hipoxia difusional por falla en O₂",
+            "Barotrauma por sobrepresión"
+        ],
+
+        mitigacion: [
+            "Sistema antihipóxico",
+            "Válvula APL de seguridad",
+            "Sistema Scavenging"
+        ],
+
+        mantenimiento: [
+            "Calibración de celda de O₂",
+            "Pruebas diarias de hermeticidad"
+        ],
+
+        enlaces: [
+            {
+                texto: "MeDevIS WHO (COM_300)",
+                url: "https://medevis.who-healthtechnologies.org/devices/COM_300"
+            }
+        ]
+    }
+};
+
+
+/* ========================================
+   PLANTILLA GENERAL DE LAS FICHAS
+======================================== */
+
+function mostrarFichaEquipo(idVentana, equipo) {
+    const ventana = document.getElementById(idVentana);
+
+    if (!ventana || !equipo) {
+        console.error("Falta la ventana o los datos del equipo:", idVentana);
+        return;
+    }
+
+    const espacio = ventana.querySelector(".datos-ficha");
+
+    if (!espacio) {
+        console.error(
+            "Falta el contenedor con class=\"datos-ficha\" dentro de:",
+            idVentana
+        );
+        return;
+    }
+
+    // Encabezado con nombre y código ECRI.
+    const encabezado = document.createElement("header");
+
+    const nombre = document.createElement("h2");
+    nombre.textContent = equipo.nombre;
+    encabezado.append(nombre);
+
+    if (equipo.ecri) {
+        const codigo = document.createElement("span");
+        codigo.textContent = "ECRI: " + equipo.ecri;
+        encabezado.append(codigo);
+    }
+
+    // Cuerpo de la ficha.
+    const cuerpo = document.createElement("div");
+    const informacion = document.createElement("div");
+
+    cuerpo.append(informacion);
+
+    // Secciones compartidas por todos los equipos.
+    const secciones = [
+        ["Descripción", equipo.descripcion],
+        ["Uso principal", equipo.uso],
+        ["Requerimientos", equipo.requerimientos],
+        ["Accesorios necesarios", equipo.accesorios],
+        ["Principales riesgos", equipo.riesgos],
+        ["Medidas de mitigación", equipo.mitigacion],
+        ["Mantenimiento y calibración", equipo.mantenimiento]
+    ];
+
+    for (const [titulo, contenido] of secciones) {
+        // Las secciones vacías se ocultan.
+        if (!contenido || contenido.length === 0) {
+            continue;
+        }
+
+        const subtitulo = document.createElement("h3");
+        subtitulo.textContent = titulo;
+        informacion.append(subtitulo);
+
+        if (Array.isArray(contenido)) {
+            const lista = document.createElement("ul");
+
+            for (const texto of contenido) {
+                const item = document.createElement("li");
+                item.textContent = texto;
+                lista.append(item);
+            }
+
+            informacion.append(lista);
+        } else {
+            const parrafo = document.createElement("p");
+            parrafo.textContent = contenido;
+            informacion.append(parrafo);
+        }
+    }
+
+    // Enlaces externos.
+    if (equipo.enlaces && equipo.enlaces.length > 0) {
+        const tituloEnlaces = document.createElement("h3");
+        tituloEnlaces.textContent = "Enlaces";
+        informacion.append(tituloEnlaces);
+
+        const listaEnlaces = document.createElement("ul");
+
+        for (const enlace of equipo.enlaces) {
+            const item = document.createElement("li");
+            const link = document.createElement("a");
+
+            link.textContent = enlace.texto;
+            link.href = enlace.url;
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            item.append(link);
+            listaEnlaces.append(item);
+        }
+
+        informacion.append(listaEnlaces);
+    }
+
+    // Foto a la derecha, cuando se haya indicado una ruta.
+    if (equipo.foto) {
+        const columnaFoto = document.createElement("div");
+        const imagen = document.createElement("img");
+
+        imagen.src = equipo.foto;
+        imagen.alt = equipo.nombre;
+
+        columnaFoto.append(imagen);
+        cuerpo.append(columnaFoto);
+    } else {
+        cuerpo.classList.add("sin-foto");
+    }
+
+    // Actualiza el contenido y abre la ventana.
+    espacio.replaceChildren(encabezado, cuerpo);
+    abrirModal(idVentana);
 }
