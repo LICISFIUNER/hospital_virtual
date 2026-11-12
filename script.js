@@ -243,7 +243,7 @@ const fichasEquipos = {
         mantenimiento: [
             "Calibración de celda de O₂",
             "Pruebas diarias de hermeticidad",
-            "Reemplazo periódico de la cal sodada agotada. "
+            "Reemplazo periódico de la cal sodada agotada. ",
             "Mantenimiento de válvulas y prueba de vaporizadores."
 
         ],
@@ -252,7 +252,10 @@ const fichasEquipos = {
             {
                 texto: "MeDevIS WHO (COM_300)",
                 url: "https://medevis.who-healthtechnologies.org/devices/COM_300"
-
+            },
+            {
+                texto: "MeDevIS WHO (COM_037)",
+                url: "https://medevis.who-healthtechnologies.org/devices/COM_037"
             }
         ]
     }
