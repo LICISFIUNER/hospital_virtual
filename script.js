@@ -20,7 +20,9 @@ function cerrarQuirofano() {
 }
 
 function abrirElectrobisturi() {
-    abrirModal("ventanaElectrobisturi", fichasEquipos.electrobisturi);
+    mostrarFichaEquipo(
+        "ventanaElectrobisturi",
+        fichasEquipos.electrobisturi);
 }
 
 function cerrarElectrobisturi() {
@@ -312,9 +314,7 @@ monitor: {
             { texto: "Medevis WHO (CSD_385 - Monitor de Signos Vitales)",
              url: "https://medevis.who-healthtechnologies.org/devices/CSD_385" }
         ]
-    }
-   },
-
+    },
     electrobisturi: {
         nombre: "Electrobisturí (Unidad Electroquirúrgica)",
         ecri: "11-490",
