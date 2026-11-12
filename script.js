@@ -324,7 +324,7 @@ monitor: {
         uso: "Corte y coagulación precisa de tejidos biológicos en cirugías abiertas, laparoscópicas y microcirugías, reduciendo significativamente el sangrado y el tiempo quirúrgico.",
 
         requerimientos: [
-            "Eléctrico: Red 220V AC",
+            "Eléctrico: Red 220V AC"
         ],
 
         accesorios: [
