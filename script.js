@@ -20,7 +20,7 @@ function cerrarQuirofano() {
 }
 
 function abrirElectrobisturi() {
-    abrirModal("ventanaElectrobisturi");
+    abrirModal("ventanaElectrobisturi", fichasEquipos.electrobisturi);
 }
 
 function cerrarElectrobisturi() {
@@ -313,6 +313,58 @@ monitor: {
              url: "https://medevis.who-healthtechnologies.org/devices/CSD_385" }
         ]
     }
+   },
+
+    electrobisturi: {
+        nombre: "Electrobisturí (Unidad Electroquirúrgica)",
+        ecri: "11-490",
+        foto: "imagenes/electrobisturi.png",
+
+        descripcion: "Dispositivo electromédico basado en la diatermia quirúrgica que utiliza corrientes eléctricas de radiofrecuencia (200 kHz a 3,3 MHz, con potencias de hasta 400 W) para generar calor concentrado sobre el tejido, permitiendo realizar diéresis (corte puro o mixto) y hemostasia (coagulación o fulguración). Opera en modo Monopolar (corriente desde el lápiz hacia una placa de retorno) y modo Bipolar (corriente circulante únicamente entre las puntas de una pinza especial).",
+        uso: "Corte y coagulación precisa de tejidos biológicos en cirugías abiertas, laparoscópicas y microcirugías, reduciendo significativamente el sangrado y el tiempo quirúrgico.",
+
+        requerimientos: [
+            "Eléctrico: Red 220V AC",
+        ],
+
+        accesorios: [
+            "Lápiz / electrodo activo monopolar (descartable o reutilizable con control manual)",
+            "Pinza bipolar y cable de conexión dedicado",
+            "Electrodo neutro / placa de retorno adhesiva (preferentemente dividida para monitoreo REM/CQM)",
+            "Pedal de doble interruptor (activación de Corte y Coagulación)"
+        ],
+
+        riesgos: [
+            "Quemaduras térmicas en la piel del paciente en la zona de la placa neutra por falta de contacto completo o desprendimiento parcial",
+            "Incendio o explosión de antisépticos volátiles (con base alcohólica) o gases anestésicos inflamables por chispa de RF",
+            "Quemaduras en sitios alternativos por acoplamiento capacitivo o contacto del paciente con partes metálicas de la camilla",
+            "Interferencia electromagnética (EMI) con marcapasos, cardiodesfibriladores implantables o monitores de signos vitales"
+        ],
+
+        mitigacion: [
+            "Monitoreo continuo de impedancia y contacto de la placa de retorno (sistema REM / CQM) que bloquea la salida ante fallas en modo monopolar",
+            "Evitar el modo monopolar en pacientes con dispositivos cardíacos implantados, utilizando preferentemente el modo bipolar",
+            "Secado y evaporación completa de soluciones antisépticas antes de activar la radiofrecuencia",
+            "Aislamiento completo del paciente respecto a superficies metálicas conectadas a tierra"
+        ],
+
+        mantenimiento: [
+            "Medición semestral/anual de potencia de salida (a 500 kHz) sobre cargas estándar con analizador electroquirúrgico",
+            "Control de corrientes de fuga de alta frecuencia (HF) y seguridad eléctrica según IEC 60601-2-2",
+            "Inspección visual y de continuidad del cableado del electrodo activo, pinza bipolar, pedal y cable de placa neutra",
+            "Verificación funcional de alarmas acústicas/visuales y del sistema de bloqueo por falla de placa de retorno"
+        ],
+
+        enlaces: [
+            { texto: "Principio de funcionamiento (YouTube)", url: "https://www.youtube.com/watch?v=qfGFa-DsMeE" },
+            { texto: "Medevis WHO (COM_002)", url: "https://medevis.who-healthtechnologies.org/devices/COM_002" },
+            { texto: "Medevis WHO (SUR_088)", url: "https://medevis.who-healthtechnologies.org/devices/SUR_088" },
+            { texto: "Medevis WHO (COM_377)", url: "https://medevis.who-healthtechnologies.org/devices/COM_377" },
+            { texto: "Medevis WHO (CSD_539)", url: "https://medevis.who-healthtechnologies.org/devices/CSD_539" },
+            { texto: "Medevis WHO (CAN_392)", url: "https://medevis.who-healthtechnologies.org/devices/CAN_392" }
+        ]
+    }
+};
 };
 
 
