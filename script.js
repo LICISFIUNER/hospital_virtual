@@ -264,7 +264,7 @@ const fichasEquipos = {
                 url: "https://medevis.who-healthtechnologies.org/devices/COM_037"
             }
         ]
-    }
+    },
 monitor: {
         nombre: "Monitor Multiparamétrico",
         ecri: "12-647",
