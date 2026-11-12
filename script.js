@@ -268,15 +268,13 @@ const fichasEquipos = {
 monitor: {
         nombre: "Monitor Multiparamétrico",
         ecri: "12-647",
-        foto: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+        foto: "imagenes/Monitor.png",
 
         descripcion: "Dispositivo electromédico diseñado para adquirir, procesar, visualizar en tiempo real y registrar continuamente múltiples parámetros fisiológicos vitales del paciente (ECG, frecuencia cardíaca, SpO₂, presión arterial no invasiva e invasiva, temperatura y capnografía/EtCO₂).",
         uso: "Vigilancia continua del estado hemodinámico y respiratorio de pacientes críticos, anestesiados o inestables en Unidades de Terapia Intensiva (UTI/UCI), quirófanos, guardias de emergencia y traslados intrahospitalarios.",
 
         requerimientos: [
-            "Eléctrico: Red 220V AC (50/60 Hz) con toma a tierra hospitalaria",
-            "Batería interna recargable (autonomía mínima de 2 a 4 horas para traslados)",
-            "Conectividad de red (Ethernet / Wi-Fi) para integración a central de monitoreo"
+            "Eléctrico: Red 220V"
         ],
 
         accesorios: [
@@ -286,7 +284,6 @@ monitor: {
             "Sonda/sensor de temperatura cutánea o esofágica/rectal",
             "Línea de muestreo / sensor de capnografía (EtCO₂) y transductores de presión invasiva (opcional según complejidad)"
         ],
-
         riesgos: [
             "Falsas alarmas constantes o fatiga de alarmas que llevan a desatender eventos críticos reales",
             "Lecturas erróneas por interferencia electromagnética (electrobisturí), artefactos de movimiento o mala perfusión periférica",
@@ -310,10 +307,13 @@ monitor: {
         ],
 
         enlaces: [
-            { texto: "Medevis WHO (COM_019 - Monitor Multiparamétrico)", url: "https://medevis.who-healthtechnologies.org/devices/COM_019" },
-            { texto: "Medevis WHO (CSD_385 - Monitor de Signos Vitales)", url: "https://medevis.who-healthtechnologies.org/devices/CSD_385" }
+            { texto: "Medevis WHO (COM_019 - Monitor Multiparamétrico)", 
+             url: "https://medevis.who-healthtechnologies.org/devices/COM_019" },
+            { texto: "Medevis WHO (CSD_385 - Monitor de Signos Vitales)",
+             url: "https://medevis.who-healthtechnologies.org/devices/CSD_385" }
         ]
     }
+};
 
 
 /* ========================================
