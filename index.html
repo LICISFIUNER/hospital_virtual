@@ -265,6 +265,21 @@
                                 Ver ficha
                             </button>
                         </article>
+                         <article class="equipo">
+                        <div class="icono-equipo">▣</div>
+                    
+                        <div class="datos-equipo">
+                            <h3>Monitor multiparamétrico</h3>
+                            <p>Equipamiento de monitorización</p>
+                        </div>
+                    
+                        <button
+                            type="button"
+                            class="boton-ficha"
+                            onclick="abrirMonitor()">
+                            Ver ficha
+                        </button>
+                    </article>
 
                         <p class="nota-equipos">
                             Se incorporarán más equipos a medida que
@@ -438,6 +453,13 @@
                         onclick="abrirCarroAnestesia()">
                     17
                 </button>
+                <button
+                type="button"
+                class="referencia referencia-monitor"
+                onclick="abrirMonitor()"
+                aria-label="Ver ficha del monitor multiparamétrico">
+                M
+                </button>
             </div>
 
 
@@ -604,7 +626,21 @@
       No copies el HTML completo anterior: solamente esos cuatro
       bloques de ventanas, incluyendo todo su contenido.
     -->
+<div id="ventanaMonitor" class="modal ficha-equipo">
+    <div class="modal-contenido">
 
+        <button
+            type="button"
+            class="cerrar"
+            onclick="cerrarMonitor()"
+            aria-label="Cerrar ficha">
+            ×
+        </button>
+
+        <div class="datos-ficha"></div>
+
+    </div>
+</div>
     <script src="script.js"></script>
 
 </body>
