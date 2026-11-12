@@ -34,7 +34,13 @@ function abrirCarroAnestesia() {
 function cerrarCarroAnestesia() {
     cerrarModal("ventanaCarroAnestesia");
 }
+function abrirMonitor() {
+    mostrarFichaEquipo("ventanaMonitor", fichasEquipos.monitor);
+}
 
+function cerrarMonitor() {
+    cerrarModal("ventanaMonitor");
+}
 /* ========================================
    ABRIR Y CERRAR MODALES
 ======================================== */
@@ -259,7 +265,55 @@ const fichasEquipos = {
             }
         ]
     }
-};
+monitor: {
+        nombre: "Monitor Multiparamétrico",
+        ecri: "12-647",
+        foto: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+
+        descripcion: "Dispositivo electromédico diseñado para adquirir, procesar, visualizar en tiempo real y registrar continuamente múltiples parámetros fisiológicos vitales del paciente (ECG, frecuencia cardíaca, SpO₂, presión arterial no invasiva e invasiva, temperatura y capnografía/EtCO₂).",
+        uso: "Vigilancia continua del estado hemodinámico y respiratorio de pacientes críticos, anestesiados o inestables en Unidades de Terapia Intensiva (UTI/UCI), quirófanos, guardias de emergencia y traslados intrahospitalarios.",
+
+        requerimientos: [
+            "Eléctrico: Red 220V AC (50/60 Hz) con toma a tierra hospitalaria",
+            "Batería interna recargable (autonomía mínima de 2 a 4 horas para traslados)",
+            "Conectividad de red (Ethernet / Wi-Fi) para integración a central de monitoreo"
+        ],
+
+        accesorios: [
+            "Cable troncal y latiguillos de ECG (3, 5 o 12 derivaciones) + electrodos descartables",
+            "Sensor de oximetría de pulso (SpO₂) adulto/pediátrico/neonatal y cable extensor",
+            "Manguito (brazalete) de presión arterial no invasiva (PANI) y manguera neumática",
+            "Sonda/sensor de temperatura cutánea o esofágica/rectal",
+            "Línea de muestreo / sensor de capnografía (EtCO₂) y transductores de presión invasiva (opcional según complejidad)"
+        ],
+
+        riesgos: [
+            "Falsas alarmas constantes o fatiga de alarmas que llevan a desatender eventos críticos reales",
+            "Lecturas erróneas por interferencia electromagnética (electrobisturí), artefactos de movimiento o mala perfusión periférica",
+            "Lesiones isquémicas o hematomas por inflado excesivo/frecuente del manguito de PANI",
+            "Quemaduras cutáneas en el sitio del sensor de SpO₂ por presión prolongada o incompatibilidad de sensores",
+            "Macro/microshock eléctrico por falla de aislamiento galvánico en conexiones al paciente (especialmente en presión invasiva/ECG)"
+        ],
+
+        mitigacion: [
+            "Configuración personalizada de límites de alarma fisiológicos y jerarquización sonora/visual",
+            "Filtros de rechazo de alta frecuencia (modo cirugía) y aislamiento tipo CF a prueba de desfibrilación en entradas de paciente",
+            "Rotación periódica del sitio de colocación del sensor de SpO₂ y selección del tamaño adecuado de brazalete PANI",
+            "Uso exclusivo de sensores y cables compatibles certificados por el fabricante"
+        ],
+
+        mantenimiento: [
+            "Verificación anual de exactitud de parámetros con simulador de paciente multiparamétrico (ECG, SpO₂, PANI, temperatura)",
+            "Pruebas de seguridad eléctrica según norma IEC 60601-1 (corrientes de fuga y resistencia de puesta a tierra)",
+            "Control de estanqueidad neumática y calibración del manómetro de presión no invasiva (PANI)",
+            "Inspección visual de cables, conectores y verificación de capacidad de carga de la batería interna"
+        ],
+
+        enlaces: [
+            { texto: "Medevis WHO (COM_019 - Monitor Multiparamétrico)", url: "https://medevis.who-healthtechnologies.org/devices/COM_019" },
+            { texto: "Medevis WHO (CSD_385 - Monitor de Signos Vitales)", url: "https://medevis.who-healthtechnologies.org/devices/CSD_385" }
+        ]
+    }
 
 
 /* ========================================
