@@ -2,7 +2,7 @@
    Cargar después de script.js y Papa Parse.
    Configurar data-csv en index.html.
    Conserva el formato de mostrarFichaEquipo()
-   y las clases de estilo existentes. */
+   y las clases de estilo existentesd. */
 
 (function () {
     "use strict";
