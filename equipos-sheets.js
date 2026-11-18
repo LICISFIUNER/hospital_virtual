@@ -137,44 +137,36 @@
             posicion_x: x ? posicion(x) : null,
             posicion_y: y ? posicion(y) : null,
 
-            enlaces: renglones(fila.enlaces).map(linea => {
+            enlaces: renglones(fila.enlaces)
+               .map(linea => {
                 const corte = linea.indexOf("|");
 
-                const url = urlSegura(
-                    corte < 0
-                        ? linea
-                        : linea.slice(corte + 1)
-                );
+                const nombreEnlace = corte < 0
+                        ? " "
+                        : texto(linea.slice(0,corte));
 
-                if (!url) {
-                    throw new Error(
-                        id + ": falta la URL de un enlace."
+                  // Si falta la URL, se omite solamente ese enlace.
+                if (!direccion) {
+                    console.warn(
+                        id + ": se omitió un enlace porque no tiene URL."
                     );
+                   return null;
                 }
-
+               try {
+                  const url = urlSegura(direccion);
+                  
                 return {
-                    texto: corte < 0
-                        ? url
-                        : texto(linea.slice(0, corte)) || url,
-                    url: url
-                };
-            })
-        };
-
-        const camposConListas = [
-            "requerimientos",
-            "accesorios",
-            "riesgos",
-            "mitigacion",
-            "mantenimiento"
-        ];
-
-        for (const campo of camposConListas) {
-            resultado[campo] = renglones(fila[campo]);
+                    texto: nombreEnlace || url,
+                    url: url};
+           }  catch (error) {
+             console.warn(
+                id + ": se omitió un enlace inválido.",
+                error.message
+            );
+            return null;
         }
-
-        return resultado;
-    }
+    })
+    .filter(Boolean)
 
     /* ========================================
        LEER EL CSV DE GOOGLE SHEETS
